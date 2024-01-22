@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Back To Top Scroll Button</title>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<style>
+		p{
+			width: 100%;
+			height: 250vh;
+		}
+		
+
+	#sc_btn{
+		width: 50px;
+		height: 50px;
+		background: #F3274C;
+		border-radius: 50%;
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+		position: fixed;
+		right: 50%;
+		bottom: 50%;
+		display: none;
+		place-items: center;
+		cursor: pointer;
+	}
+	#sc_btn i{
+		display: block;
+		height: calc(100% - 15px);
+		width: calc(100% - 15px);
+		background: #fff;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		font-size: 35px;
+		color: #000;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>Back to Top</p>
+
+		<!-- -------- Back to Top Scroll Button ------- -->
+
+		<div id="sc_btn">
+			<i class='bx bxs-up-arrow-alt' id="sc_value"></i>
+		</div>
+	</div>
+
+
+	<script>
+		
+		// ------- Back to Top Scroll Button -----------
+
+		let caleScrollValue = () => {
+		    let scrollProcess = document.getElementById('sc_btn');
+		    let processValue = document.querySelector('#sc_value');
+
+		    let pos = document.documentElement.scrollTop;
+		    console.log(pos);
+
+		    let caleHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		    let scrollValue = Math.round((pos * 100) / caleHeight);
+
+		    if(pos > 100){
+		        scrollProcess.style.display = "grid";
+		    }else{
+		        scrollProcess.style.display = "none";
+		    }
+		    
+		    scrollProcess.addEventListener("click", () => {
+		        document.documentElement.scrollTop = 0;
+		    });
+
+		    scrollProcess.style.background = `conic-gradient(#F3274C ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+		}
+
+		window.onscroll = caleScrollValue;
+		window.onload = caleScrollValue;
+
+
+
+
+	</script>
+</body>
+</html>

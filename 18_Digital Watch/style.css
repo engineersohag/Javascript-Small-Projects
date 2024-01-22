@@ -1,0 +1,13 @@
+.myWatch{
+	width: 300px;
+	height: 80px;
+	text-align: center;
+	font-size: 25px;
+	background: #fff;
+	padding: 30px;
+	box-shadow: 3px 5px 3px rgba(0, 0, 0, .4), -3px -5px 4px rgba(0, 0, 0, .4);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

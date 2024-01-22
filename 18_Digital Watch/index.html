@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Digital Watch</title>
+
+	<!-- Cursor cdn Link -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+	 <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css"> -->
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div class="myWatch">
+		<span class="H"></span>
+		<span class="M"></span><br>
+		<span class="date"></span>
+	</div>
+
+
+	
+	<script>
+        // new kursor({
+        //     type: 1
+        // });
+
+        function myTime() {
+        	var myDate = new Date();
+        	var hr, min = (myDate.getMinutes() < 10) ? "0" + myDate.getMinutes() : myDate.getMinutes(), sec = (myDate.getSeconds() < 10) ? "0" + myDate.getSeconds() : myDate.getSeconds(), M = (myDate.getHours() >= 12) ? "PM" : "AM";
+
+        	if(myDate.getHours() == 0) {
+        		hr = 12;
+        	}else if (myDate.getHours() > 12) {
+        		hr = myDate.getHours() - 12;
+        	}else{
+        		hr = myDate.getHours();
+        	}
+
+        	var currentTime = hr + ":" + min + ":" + sec + ":";
+
+        	document.getElementsByClassName("H")[0].innerHTML = currentTime;
+        	document.getElementsByClassName("M")[0].innerHTML = M;
+
+        	var myDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        	myMonth = ['January', 'February', 'March', 'April', 'June', 'July', 'August', 'September', 'Octobar', 'November', 'December'],
+			day = myDate.getDate();
+
+			var currentDate = myDay[myDate.getDay()] + ', ' + myMonth[myDate.getMonth()] +" "+ day;
+			document.getElementsByClassName('date')[0].innerHTML = currentDate;
+        }
+
+        myTime();
+
+        setInterval(function() {
+        	myTime();
+        }, 1000);
+
+    </script>
+</body>
+</html>
